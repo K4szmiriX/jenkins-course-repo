@@ -29,6 +29,12 @@
         </dependency>
     </dependencies>
 
+    <scm>
+        <developerConnection>
+            scm:git@github.com:K4szmiriX/jenkins-course-repo.git
+        </developerConnection>
+    </scm>
+
     <build>
         <plugins>
             <plugin>
