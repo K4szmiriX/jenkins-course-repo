@@ -31,7 +31,7 @@
 
     <scm>
         <developerConnection>
-            scm:git@github.com:K4szmiriX/jenkins-course-repo.git
+            scm:https://github.com/K4szmiriX/jenkins-course-repo.git
         </developerConnection>
     </scm>
 
