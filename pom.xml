@@ -34,6 +34,7 @@
         <developerConnection>scm:git:https://github.com/K4szmiriX/jenkins-course-repo.git</developerConnection>
         <url>https://github.com/K4szmiriX/jenkins-course-repo.git</url>
         <tag>v1.0</tag>
+
     </scm>
 
 
