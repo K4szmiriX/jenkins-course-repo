@@ -14,7 +14,7 @@ pipeline {
                 git url: 'https://github.com/K4szmiriX/jenkins-course-repo.git', branch: 'master'
 
                 // Run Maven on a Unix agent.
-                sh "mvn clean spring-boot:build-image"
+                sh "mvn clean install"
             }
         }
     }
