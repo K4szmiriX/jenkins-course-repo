@@ -16,17 +16,18 @@ pipeline {
         }
 
         stage('Build') {
-            when {
-                expression {
-                    result = sh (script: "git log -1 | grep '.*\\[ci skip\\].*'", returnStatus: true)
-                    if (result == 0) {
-                        return false;
-                    }
-                    return true;
-                }
-            }
+//             when {
+//                 expression {
+//                     result = sh (script: "git log -1 | grep '.*\\[ci skip\\].*'", returnStatus: true)
+//                     if (result == 0) {
+//                         return false;
+//                     }
+//                     return true;
+//                 }
+//             }
             steps {
                 // Run Maven on a Unix agent.
+                scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*')
                 sh "mvn clean install"
             }
         }
