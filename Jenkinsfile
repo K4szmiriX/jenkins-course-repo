@@ -7,13 +7,19 @@ pipeline {
         jdk "jdk-17"
     }
 
-    stages {
-        stage('Build') {
-            steps {
-                // Get some code from a GitHub repository
-                //git url: 'https://github.com/K4szmiriX/jenkins-course-repo.git', branch: 'master'
 
-                git url: 'https://github.com/rechandler12/szkolenie-ci-jenkins-example.git', branch: 'main'
+    stages {
+        stage('Checkout') {
+            git url: 'https://github.com/rechandler12/szkolenie-ci-jenkins-example.git', branch: 'main'
+        }
+
+        stage('Build') {
+            when {
+                expression {
+                    !currentBuild.changeSets.isEmpty() && !currentBuild.changeSets[0].msg.contains('[ci skip]')
+                }
+            }
+            steps {
                 // Run Maven on a Unix agent.
                 sh "mvn clean install"
             }
