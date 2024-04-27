@@ -17,8 +17,19 @@ pipeline {
 
         stage('Build') {
             when {
+                // Warunek: Sprawdź czy wiadomość commita nie zawiera '[skip CI]'
                 expression {
-                    !currentBuild.changeSets.isEmpty() && !currentBuild.changeSets[0].msg.contains('[ci skip]')
+                    def changeSets = currentBuild.changeSets
+                    if (changeSets != null && !changeSets.isEmpty()) {
+                        for (changeSet in changeSets) {
+                            for (commit in changeSet.getItems()) {
+                                if (commit.getComment().contains('[skip CI]')) {
+                                    return false  // Pomiń ten etap
+                                }
+                            }
+                        }
+                    }
+                    return true  // Wykonaj ten etap
                 }
             }
             steps {
