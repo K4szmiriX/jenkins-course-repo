@@ -10,7 +10,7 @@ pipeline {
 
     stages {
         stage('Checkout') {
-            git url: 'https://github.com/rechandler12/szkolenie-ci-jenkins-example.git', branch: 'main'
+            git url: 'https://github.com/K4szmiriX/jenkins-course-repo.git', branch: 'master'
         }
 
         stage('Build') {
