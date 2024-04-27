@@ -17,7 +17,6 @@ pipeline {
 
         stage('Build') {
             when {
-                // Warunek: Sprawdź czy wiadomość commita nie zawiera '[skip CI]'
                 expression {
                     result = sh (script: "git log -1 | grep '.*\\[ci skip\\].*'", returnStatus: true)
                     if (result == 0) {
