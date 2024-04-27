@@ -26,7 +26,7 @@ pipeline {
 //                 }
 //             }
             steps {
-                // Run Maven on a Unix agent.
+                // scmSkip
                 scmSkip(deleteBuild: true, skipPattern:'.*\\[ci skip\\].*')
                 sh "mvn clean install"
             }
