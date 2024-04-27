@@ -26,6 +26,7 @@ pipeline {
 //                 }
 //             }
             steps {
+                triggers { cron('* * * * *') }
                 scmSkip(deleteBuild: false, skipPattern:'.*\\[ci skip\\].*')
                 sh "mvn clean install"
             }
