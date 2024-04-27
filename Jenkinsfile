@@ -10,7 +10,9 @@ pipeline {
 
     stages {
         stage('Checkout') {
-            git url: 'https://github.com/K4szmiriX/jenkins-course-repo.git', branch: 'master'
+            steps {
+                git url: 'https://github.com/K4szmiriX/jenkins-course-repo.git', branch: 'master'
+            }
         }
 
         stage('Build') {
